@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: canary-consumer
+  cloud:
+    servicecomb:
+      config:
+        serverAddr:  http://127.0.0.1:30113
+        watch:
+          delay: 10000
+      credentials:
+        enabled: true
+#        accessKey: ak
+#        secretKey: sk
+#        project: cn-north-4
+#        akskCustomCipher: default
