@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one or more
+  ~ contributor license agreements.  See the NOTICE file distributed with
+  ~ this work for additional information regarding copyright ownership.
+  ~ The ASF licenses this file to You under the Apache License, Version 2.0
+  ~ (the "License"); you may not use this file except in compliance with
+  ~ the License.  You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>com.huaweicloud</groupId>
+    <artifactId>spring-cloud-huawei</artifactId>
+    <version>1.8.0-SNAPSHOT</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>spring-cloud-huawei-dependencies</artifactId>
+  <packaging>pom</packaging>
+  <version>1.8.0-SNAPSHOT</version>
+  <name>Spring Cloud Huawei Dependencies</name>
+  <properties>
+    <feign-core.version>11.0</feign-core.version>
+    <httpclient.version>4.5.9</httpclient.version>
+    <jackson.version>2.12.1</jackson.version>
+    <jmockit.version>1.36</jmockit.version>
+    <junit.version>4.12</junit.version>
+    <dtm-client.version>1.0.2</dtm-client.version>
+    <guava.version>30.0-jre</guava.version>
+    <snakeyaml.version>1.26</snakeyaml.version>
+    <commons-configuration.version>1.10</commons-configuration.version>
+    <websocket.version>1.5.0</websocket.version>
+    <spring-fox.version>3.0.0</spring-fox.version>
+    <swagger-core.version>2.1.9</swagger-core.version>
+    <swagger-core-v2.version>1.6.2</swagger-core-v2.version>
+    <resilience4j.version>1.7.0</resilience4j.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- core dependencies of spring cloud huawei, put it in the begging -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- this project -->
+      <dependency>
+        <groupId>com.huaweicloud</groupId>
+        <artifactId>spring-cloud-huawei-bom</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- swagger -->
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-boot-starter</artifactId>
+        <version>${spring-fox.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.swagger.core.v3</groupId>
+        <artifactId>swagger-core</artifactId>
+        <version>${swagger-core.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-core</artifactId>
+        <version>${swagger-core-v2.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-models</artifactId>
+        <version>${swagger-core-v2.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-annotations</artifactId>
+        <version>${swagger-core-v2.version}</version>
+      </dependency>
+      <!-- servicecomb -->
+      <dependency>
+        <groupId>org.apache.servicecomb</groupId>
+        <artifactId>java-chassis-bom</artifactId>
+        <version>${servicecomb.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- huawei parts -->
+      <dependency>
+        <groupId>com.huawei.paas.dtm</groupId>
+        <artifactId>dtm-client</artifactId>
+        <version>${dtm-client.version}</version>
+        <exclusions>
+          <exclusion>
+            <artifactId>spring-boot-starter</artifactId>
+            <groupId>org.springframework.boot</groupId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+      <!-- other 3rd parties -->
+      <dependency>
+        <groupId>io.github.openfeign</groupId>
+        <artifactId>feign-core</artifactId>
+        <version>${feign-core.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.yaml</groupId>
+        <artifactId>snakeyaml</artifactId>
+        <version>${snakeyaml.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jmockit</groupId>
+        <artifactId>jmockit</artifactId>
+        <version>${jmockit.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-configuration</groupId>
+        <artifactId>commons-configuration</artifactId>
+        <version>${commons-configuration.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.java-websocket</groupId>
+        <artifactId>Java-WebSocket</artifactId>
+        <version>${websocket.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.github.resilience4j</groupId>
+        <artifactId>resilience4j-bom</artifactId>
+        <version>${resilience4j.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson</groupId>
+        <artifactId>jackson-bom</artifactId>
+        <version>${jackson.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>
